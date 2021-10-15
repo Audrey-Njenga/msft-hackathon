@@ -6,3 +6,5 @@
 3. Add local changes 
 4. Push changes to your branch name 
 5. Create and Squash merge pull request if there are no merge conflicts
+6. `Squash merge pull request` if there are no merge conflicts
+7. Delete branch your local 
