@@ -35,6 +35,50 @@ import {
 import PanelHeader from "components/PanelHeader/PanelHeader.js";
 
 function Notifications() {
+
+  const { delay, ServiceBusClient, ServiceBusMessage } = require("@azure/service-bus");
+
+  // connection string to your Service Bus namespace
+  const connectionString = "Endpoint=sb://forest-guard-namespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=gWFDGWRgN73QQrxv5AINqcZbokuyvyC/VSqetcT3fb8="
+
+  // name of the queue
+  const queueName = "forest-guard-queue"
+
+  async function main() {
+    // create a Service Bus client using the connection string to the Service Bus namespace
+    const sbClient = new ServiceBusClient(connectionString);
+
+    // createReceiver() can also be used to create a receiver for a subscription.
+    const receiver = sbClient.createReceiver(queueName);
+
+    // function to handle messages
+    const myMessageHandler = async (messageReceived) => {
+      console.log(messageReceived.body);
+    };
+
+    // function to handle any errors
+    const myErrorHandler = async (error) => {
+      console.log(error);
+    };
+
+    // subscribe and specify the message and error handlers
+    receiver.subscribe({
+      processMessage: myMessageHandler,
+      processError: myErrorHandler
+    });
+
+    // Waiting long enough before closing the sender to send messages
+    await delay(20000);
+
+    await receiver.close();
+    await sbClient.close();
+  }
+  // call the main function
+  main().catch((err) => {
+    console.log("Error occurred: ", err);
+    process.exit(1);
+  });
+
   const notificationAlert = React.useRef();
   const notify = (place) => {
     var color = Math.floor(Math.random() * 5 + 1);
