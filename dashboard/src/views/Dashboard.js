@@ -54,16 +54,10 @@ function Dashboard() {
   return (
     <>
       <PanelHeader
-        size="lg"
-        content={
-          <Line
-            data={dashboardPanelChart.data}
-            options={dashboardPanelChart.options}
-          />
-        }
+        size="sm"
       />
       <div className="content">
-        <Row>
+        {/* <Row>
           <Col xs={12} md={4}>
             <Card className="card-chart">
               <CardHeader>
@@ -88,10 +82,7 @@ function Dashboard() {
               </CardHeader>
               <CardBody>
                 <div className="chart-area">
-                  <Line
-                    data={dashboardShippedProductsChart.data}
-                    options={dashboardShippedProductsChart.options}
-                  />
+                  <iframe src="https://app.powerbi.com/reportEmbed?reportId=9a930300-c7fc-4a30-a5e0-fa9df8818a5c&autoAuth=true&ctid=6e2cc058-79af-4df8-92e6-ee6e0d1dea3e&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXNvdXRoLWFmcmljYS1ub3J0aC1hLXByaW1hcnktcmVkaXJlY3QuYW5hbHlzaXMud2luZG93cy5uZXQvIn0%3D" frameborder="0"></iframe>
                 </div>
               </CardBody>
               <CardFooter>
@@ -161,155 +152,16 @@ function Dashboard() {
               </CardFooter>
             </Card>
           </Col>
-        </Row>
+        </Row> */}
         <Row>
           <Col xs={12} md={6}>
             <Card className="card-tasks">
               <CardHeader>
-                <h5 className="card-category">Backend Development</h5>
-                <CardTitle tag="h4">Tasks</CardTitle>
+                <h5 className="card-category"></h5>
+                <CardTitle tag="h4">Temperature</CardTitle>
               </CardHeader>
               <CardBody>
-                <div className="table-full-width table-responsive">
-                  <Table>
-                    <tbody>
-                      <tr>
-                        <td>
-                          <FormGroup check>
-                            <Label check>
-                              <Input defaultChecked type="checkbox" />
-                              <span className="form-check-sign" />
-                            </Label>
-                          </FormGroup>
-                        </td>
-                        <td className="text-left">
-                          Sign contract for "What are conference organizers
-                          afraid of?"
-                        </td>
-                        <td className="td-actions text-right">
-                          <Button
-                            className="btn-round btn-icon btn-icon-mini btn-neutral"
-                            color="info"
-                            id="tooltip731609871"
-                            type="button"
-                          >
-                            <i className="now-ui-icons ui-2_settings-90" />
-                          </Button>
-                          <UncontrolledTooltip
-                            delay={0}
-                            target="tooltip731609871"
-                          >
-                            Edit Task
-                          </UncontrolledTooltip>
-                          <Button
-                            className="btn-round btn-icon btn-icon-mini btn-neutral"
-                            color="danger"
-                            id="tooltip923217206"
-                            type="button"
-                          >
-                            <i className="now-ui-icons ui-1_simple-remove" />
-                          </Button>
-                          <UncontrolledTooltip
-                            delay={0}
-                            target="tooltip923217206"
-                          >
-                            Remove
-                          </UncontrolledTooltip>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <FormGroup check>
-                            <Label check>
-                              <Input type="checkbox" />
-                              <span className="form-check-sign" />
-                            </Label>
-                          </FormGroup>
-                        </td>
-                        <td className="text-left">
-                          Lines From Great Russian Literature? Or E-mails From
-                          My Boss?
-                        </td>
-                        <td className="td-actions text-right">
-                          <Button
-                            className="btn-round btn-icon btn-icon-mini btn-neutral"
-                            color="info"
-                            id="tooltip907509347"
-                            type="button"
-                          >
-                            <i className="now-ui-icons ui-2_settings-90" />
-                          </Button>
-                          <UncontrolledTooltip
-                            delay={0}
-                            target="tooltip907509347"
-                          >
-                            Edit Task
-                          </UncontrolledTooltip>
-                          <Button
-                            className="btn-round btn-icon btn-icon-mini btn-neutral"
-                            color="danger"
-                            id="tooltip496353037"
-                            type="button"
-                          >
-                            <i className="now-ui-icons ui-1_simple-remove" />
-                          </Button>
-                          <UncontrolledTooltip
-                            delay={0}
-                            target="tooltip496353037"
-                          >
-                            Remove
-                          </UncontrolledTooltip>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <FormGroup check>
-                            <Label check>
-                              <Input defaultChecked type="checkbox" />
-                              <span className="form-check-sign" />
-                            </Label>
-                          </FormGroup>
-                        </td>
-                        <td className="text-left">
-                          Flooded: One year later, assessing what was lost and
-                          what was found when a ravaging rain swept through
-                          metro Detroit
-                        </td>
-                        <td className="td-actions text-right">
-                          <Button
-                            className="btn-round btn-icon btn-icon-mini btn-neutral"
-                            color="info"
-                            id="tooltip326247652"
-                            type="button"
-                          >
-                            <i className="now-ui-icons ui-2_settings-90" />
-                          </Button>
-                          <UncontrolledTooltip
-                            delay={0}
-                            target="tooltip326247652"
-                          >
-                            Edit Task
-                          </UncontrolledTooltip>
-                          <Button
-                            className="btn-round btn-icon btn-icon-mini btn-neutral"
-                            color="danger"
-                            id="tooltip389516969"
-                            type="button"
-                          >
-                            <i className="now-ui-icons ui-1_simple-remove" />
-                          </Button>
-                          <UncontrolledTooltip
-                            delay={0}
-                            target="tooltip389516969"
-                          >
-                            Remove
-                          </UncontrolledTooltip>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </Table>
-                </div>
-              </CardBody>
+              <iframe width="480" height="300" src="https://app.powerbi.com/reportEmbed?reportId=9a930300-c7fc-4a30-a5e0-fa9df8818a5c&autoAuth=true&ctid=6e2cc058-79af-4df8-92e6-ee6e0d1dea3e&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXNvdXRoLWFmcmljYS1ub3J0aC1hLXByaW1hcnktcmVkaXJlY3QuYW5hbHlzaXMud2luZG93cy5uZXQvIn0%3D" frameborder="0"></iframe>              </CardBody>
               <CardFooter>
                 <hr />
                 <div className="stats">
