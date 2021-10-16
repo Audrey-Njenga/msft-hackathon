@@ -1,0 +1,16 @@
+/home/audrey/Desktop/forestguard/console/bin/Debug/net5.0/console
+/home/audrey/Desktop/forestguard/console/bin/Debug/net5.0/console.deps.json
+/home/audrey/Desktop/forestguard/console/bin/Debug/net5.0/console.runtimeconfig.json
+/home/audrey/Desktop/forestguard/console/bin/Debug/net5.0/console.runtimeconfig.dev.json
+/home/audrey/Desktop/forestguard/console/bin/Debug/net5.0/console.dll
+/home/audrey/Desktop/forestguard/console/bin/Debug/net5.0/ref/console.dll
+/home/audrey/Desktop/forestguard/console/bin/Debug/net5.0/console.pdb
+/home/audrey/Desktop/forestguard/console/obj/Debug/net5.0/console.csproj.AssemblyReference.cache
+/home/audrey/Desktop/forestguard/console/obj/Debug/net5.0/console.GeneratedMSBuildEditorConfig.editorconfig
+/home/audrey/Desktop/forestguard/console/obj/Debug/net5.0/console.AssemblyInfoInputs.cache
+/home/audrey/Desktop/forestguard/console/obj/Debug/net5.0/console.AssemblyInfo.cs
+/home/audrey/Desktop/forestguard/console/obj/Debug/net5.0/console.csproj.CoreCompileInputs.cache
+/home/audrey/Desktop/forestguard/console/obj/Debug/net5.0/console.dll
+/home/audrey/Desktop/forestguard/console/obj/Debug/net5.0/ref/console.dll
+/home/audrey/Desktop/forestguard/console/obj/Debug/net5.0/console.pdb
+/home/audrey/Desktop/forestguard/console/obj/Debug/net5.0/console.genruntimeconfig.cache
