@@ -33,7 +33,7 @@ def sendEmail(sender, receivers, message):
 while True:
     smoke_sensor_val = get_smoke_sensor_value()
     gps = location.get_gps_coordinates()
-    if(smoke_sensor_val > 50):
+    if(smoke_sensor_val > 100):
         message = """
         Subject: Smoke Detected in Forest!
 
