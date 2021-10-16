@@ -1,0 +1,19 @@
+{
+  "name": "sensors",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "azure-iot-device": "^1.17.7",
+    "azure-iot-device-mqtt": "^1.15.7",
+    "node-dht-sensor": "^0.4.3",
+    "python-shell": "^3.0.1",
+    "serialport": "^9.2.4",
+    "uuid": "^8.3.2"
+  }
+}
