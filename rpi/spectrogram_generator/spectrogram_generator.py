@@ -42,7 +42,6 @@ def get_wav_info(wav_file):
     wav.close()
     return sound_info, frame_rate
 
-
 while True:
     record_sound()
     graph_spectrogram('/home/pi/Desktop/projects/msft-hackathon/sound_samples/sample.wav')
