@@ -17,4 +17,3 @@ while True:
 		lng=newmsg.longitude
 		gps = "Latitude=" + str(lat) + "and Longitude=" + str(lng)
 		print(gps)
- 
