@@ -13,6 +13,7 @@ namespace CVSPredictionSample
 {
     public static class Program
     {
+        static readonly int ML_PREDICTION_THRESHOLD = 90;
         static readonly string PredictionKey = "";
         static readonly string PredictionUrl = "";
         
@@ -112,7 +113,7 @@ namespace CVSPredictionSample
 
         private static void ProcessProbability(int probability)
         {
-            if(probability > 90){
+            if(probability > ML_PREDICTION_THRESHOLD){
                 var location = GetLocationCoordinates();
                 SendMailMessage($"Forest Fire Detected at the location {location}");
             }

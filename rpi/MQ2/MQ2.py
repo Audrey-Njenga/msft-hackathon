@@ -8,6 +8,7 @@ from azure.iot.device import IoTHubDeviceClient, Message
 password = ""
 sender = ''
 receivers = ['']
+SMOKE_SENSOR_THRESHOLD = 100
 
 azure_connection_string = ""
 MSG_TXT = '{{"messageId":{messageId}, "deviceId": "RasPiTemp", "C0Value": {val}}}'
@@ -63,7 +64,7 @@ while True:
     lng = str(jsonGPS['lng'])
     location = "https://www.bing.com/maps?q={lat}%2C+{lng}".format(lat=lat, lng=lng)
     post_smoke_sensor_value_to_azure_iot(smoke_sensor_val)
-    if(smoke_sensor_val > 100):
+    if(smoke_sensor_val > SMOKE_SENSOR_THRESHOLD):
         message = """
         Subject: Smoke Detected in Forest!
 
