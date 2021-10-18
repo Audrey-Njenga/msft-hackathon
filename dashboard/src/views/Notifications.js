@@ -39,11 +39,15 @@ function Notifications() {
   const { delay, ServiceBusClient, ServiceBusMessage } = require("@azure/service-bus");
 
   // connection string to your Service Bus namespace
-  const connectionString = "Endpoint=sb://forest-guard-namespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=gWFDGWRgN73QQrxv5AINqcZbokuyvyC/VSqetcT3fb8="
+  const connectionString = "Endpoint=sb://forestguard.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=AgfetwnfPkIqmZR4PDaXXGLdtR4N9BfI6cX33TsIHTY="
 
   // name of the queue
-  const queueName = "forest-guard-queue"
+  const queueName = "forestqueue"
 
+  const [temperature, setTemperature] = React.useState([]);
+
+
+  React.useEffect(() => {
   async function main() {
     // create a Service Bus client using the connection string to the Service Bus namespace
     const sbClient = new ServiceBusClient(connectionString);
@@ -51,12 +55,17 @@ function Notifications() {
     // createReceiver() can also be used to create a receiver for a subscription.
     const receiver = sbClient.createReceiver(queueName);
 
-    // function to handle messages
+    // const myMessages = await receiver.receiveMessages(10);
+    // return myMessages;
+    
+    //function to handle messages
     const myMessageHandler = async (messageReceived) => {
-      console.log(messageReceived.body);
+      setTemperature([...temperature,messageReceived.body.temperature]); 
+      console.log(messageReceived.body.temperature);
     };
 
     // function to handle any errors
+  
     const myErrorHandler = async (error) => {
       console.log(error);
     };
@@ -73,11 +82,14 @@ function Notifications() {
     await receiver.close();
     await sbClient.close();
   }
+
   // call the main function
   main().catch((err) => {
     console.log("Error occurred: ", err);
     process.exit(1);
   });
+}
+);
 
   const notificationAlert = React.useRef();
   const notify = (place) => {
@@ -125,187 +137,25 @@ function Notifications() {
         content={
           <div className="header text-center">
             <h2 className="title">Notifications</h2>
-            <p className="category">
-              Please Checkout{" "}
-              <a
-                href="https://github.com/creativetimofficial/react-notification-alert"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                The Full Documentation
-              </a>
-              .
-            </p>
           </div>
         }
       />
       <div className="content">
         <NotificationAlert ref={notificationAlert} />
         <Row>
-          <Col md={6} xs={12}>
-            <Card>
-              <CardHeader>
-                <CardTitle tag="h4">Notifications Style</CardTitle>
-              </CardHeader>
-              <CardBody>
-                <Alert color="info">
-                  <span>This is a plain notification</span>
-                </Alert>
-                <Alert color="info" isOpen={true} toggle={() => {}}>
-                  <span>This is a notification with close button.</span>
-                </Alert>
-                <Alert
-                  color="info"
-                  className="alert-with-icon"
-                  isOpen={true}
-                  toggle={() => {}}
-                >
-                  <span
-                    data-notify="icon"
-                    className="now-ui-icons ui-1_bell-53"
-                  />
-                  <span data-notify="message">
-                    This is a notification with close button and icon.
-                  </span>
-                </Alert>
-                <Alert
-                  color="info"
-                  className="alert-with-icon"
-                  isOpen={true}
-                  toggle={() => {}}
-                >
-                  <span
-                    data-notify="icon"
-                    className="now-ui-icons ui-1_bell-53"
-                  />
-                  <span data-notify="message">
-                    This is a notification with close button and icon and have
-                    many lines. You can see that the icon and the close button
-                    are always vertically aligned. This is a beautiful
-                    notification. So you don't have to worry about the style.
-                  </span>
-                </Alert>
-              </CardBody>
-            </Card>
-          </Col>
-          <Col md={6} xs={12}>
-            <Card>
-              <CardHeader>
-                <CardTitle tag="h4">Notification states</CardTitle>
-              </CardHeader>
-              <CardBody>
-                <Alert color="primary" isOpen={true} toggle={() => {}}>
-                  <span>
-                    <b> Primary - </b> This is a regular notification made with
-                    color="primary"
-                  </span>
-                </Alert>
-                <Alert color="info" isOpen={true} toggle={() => {}}>
-                  <span>
-                    <b> Info - </b> This is a regular notification made with
-                    color="info"
-                  </span>
-                </Alert>
-                <Alert color="success" isOpen={true} toggle={() => {}}>
-                  <span>
-                    <b> Success - </b> This is a regular notification made with
-                    color="success"
-                  </span>
-                </Alert>
-                <Alert color="warning" isOpen={true} toggle={() => {}}>
-                  <span>
-                    <b> Warning - </b> This is a regular notification made with
-                    color="warning"
-                  </span>
-                </Alert>
-                <Alert color="danger" isOpen={true} toggle={() => {}}>
-                  <span>
-                    <b> Danger - </b> This is a regular notification made with
-                    color="danger"
-                  </span>
-                </Alert>
-              </CardBody>
-            </Card>
-          </Col>
           <Col md={12} xs={12}>
             <Card>
+              <CardHeader>
+                <CardTitle tag="h4">Notifications</CardTitle>
+              </CardHeader>
               <CardBody>
-                <div className="places-buttons">
-                  <Row>
-                    <Col md={6} className="ml-auto mr-auto text-center">
-                      <CardTitle tag="h4">
-                        Notifications Places
-                        <p className="category">Click to view notifications</p>
-                      </CardTitle>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col lg={8} xs={12} className="ml-auto mr-auto">
-                      <Row>
-                        <Col md={4} xs={12}>
-                          <Button
-                            color="primary"
-                            block
-                            onClick={() => notify("tl")}
-                          >
-                            Top Left
-                          </Button>
-                        </Col>
-                        <Col md={4} xs={12}>
-                          <Button
-                            color="primary"
-                            block
-                            onClick={() => notify("tc")}
-                          >
-                            Top Center
-                          </Button>
-                        </Col>
-                        <Col md={4} xs={12}>
-                          <Button
-                            color="primary"
-                            block
-                            onClick={() => notify("tr")}
-                          >
-                            Top Right
-                          </Button>
-                        </Col>
-                      </Row>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col lg={8} xs={12} className="ml-auto mr-auto">
-                      <Row>
-                        <Col md={4} xs={12}>
-                          <Button
-                            color="primary"
-                            block
-                            onClick={() => notify("bl")}
-                          >
-                            Bottom Left
-                          </Button>
-                        </Col>
-                        <Col md={4} xs={12}>
-                          <Button
-                            color="primary"
-                            block
-                            onClick={() => notify("bc")}
-                          >
-                            Bottom Center
-                          </Button>
-                        </Col>
-                        <Col md={4} xs={12}>
-                          <Button
-                            color="primary"
-                            block
-                            onClick={() => notify("br")}
-                          >
-                            Bottom Right
-                          </Button>
-                        </Col>
-                      </Row>
-                    </Col>
-                  </Row>
-                </div>
+                { temperature.length > 0 ? 
+                <Alert color="warning" isOpen={true} toggle={() => {}}>
+                  <b> Warning - The temperture is too high</b>
+                  <span>   
+                    {temperature}
+                  </span>
+                </Alert>: <p>No Alerts</p>}
               </CardBody>
             </Card>
           </Col>

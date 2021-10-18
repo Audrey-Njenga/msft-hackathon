@@ -36,7 +36,7 @@ var dashRoutes = [
     path: "/alerts",
     name: "Alerts",
     icon: "ui-1_bell-53",
-    component: Icons,
+    component: Notifications,
     layout: "/admin",
   },
   {
