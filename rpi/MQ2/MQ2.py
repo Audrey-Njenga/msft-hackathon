@@ -61,13 +61,14 @@ while True:
     jsonGPS = json.loads(gps)
     lat = str(jsonGPS['lat'])
     lng = str(jsonGPS['lng'])
+    location = "https://www.bing.com/maps?q={lat}%2C+{lng}".format(lat=lat, lng=lng)
     post_smoke_sensor_value_to_azure_iot(smoke_sensor_val)
     if(smoke_sensor_val > 100):
         message = """
         Subject: Smoke Detected in Forest!
 
-        Smoke detected at gps coordinates Latitude:{lat} Longitude:{lng}
-        """.format(lat=lat, lng=lng)
+        Smoke detected at gps coordinates {location}
+        """.format(location=location)
         print(message)
         sendEmail(sender, receivers, message)
     time.sleep(6000) # wait for 10 minutes before next reading
